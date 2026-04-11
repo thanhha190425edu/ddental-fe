@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 
 const TOAST_LIMIT = 20;
-const TOAST_REMOVE_DELAY = 1000000;
+const TOAST_AUTO_DISMISS_DELAY = 2000;
+const TOAST_REMOVE_DELAY = 300;
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
@@ -18,30 +19,52 @@ function genId() {
   return count.toString();
 }
 
-const toastTimeouts = new Map();
+const toastRemoveTimeouts = new Map();
+const toastDismissTimeouts = new Map();
 
-const addToRemoveQueue = (toastId) => {
-  if (toastTimeouts.has(toastId)) {
+const clearQueuedTimeout = (queue, toastId) => {
+  const timeout = queue.get(toastId);
+  if (timeout) {
+    clearTimeout(timeout);
+    queue.delete(toastId);
+  }
+};
+
+const addToDismissQueue = (toastId) => {
+  if (toastDismissTimeouts.has(toastId)) {
     return;
   }
 
   const timeout = setTimeout(() => {
-    toastTimeouts.delete(toastId);
+    toastDismissTimeouts.delete(toastId);
+    dispatch({
+      type: actionTypes.DISMISS_TOAST,
+      toastId,
+    });
+  }, TOAST_AUTO_DISMISS_DELAY);
+
+  toastDismissTimeouts.set(toastId, timeout);
+};
+
+const addToRemoveQueue = (toastId) => {
+  if (toastRemoveTimeouts.has(toastId)) {
+    return;
+  }
+
+  const timeout = setTimeout(() => {
+    toastRemoveTimeouts.delete(toastId);
     dispatch({
       type: actionTypes.REMOVE_TOAST,
       toastId,
     });
   }, TOAST_REMOVE_DELAY);
 
-  toastTimeouts.set(toastId, timeout);
+  toastRemoveTimeouts.set(toastId, timeout);
 };
 
 const _clearFromRemoveQueue = (toastId) => {
-  const timeout = toastTimeouts.get(toastId);
-  if (timeout) {
-    clearTimeout(timeout);
-    toastTimeouts.delete(toastId);
-  }
+  clearQueuedTimeout(toastRemoveTimeouts, toastId);
+  clearQueuedTimeout(toastDismissTimeouts, toastId);
 };
 
 export const reducer = (state, action) => {
@@ -66,9 +89,11 @@ export const reducer = (state, action) => {
       // ! Side effects ! - This could be extracted into a dismissToast() action,
       // but I'll keep it here for simplicity
       if (toastId) {
+        _clearFromRemoveQueue(toastId);
         addToRemoveQueue(toastId);
       } else {
         state.toasts.forEach((toast) => {
+          _clearFromRemoveQueue(toast.id);
           addToRemoveQueue(toast.id);
         });
       }
@@ -87,11 +112,13 @@ export const reducer = (state, action) => {
     }
     case actionTypes.REMOVE_TOAST:
       if (action.toastId === undefined) {
+        state.toasts.forEach((toast) => _clearFromRemoveQueue(toast.id));
         return {
           ...state,
           toasts: [],
         };
       }
+      _clearFromRemoveQueue(action.toastId);
       return {
         ...state,
         toasts: state.toasts.filter((t) => t.id !== action.toastId),
@@ -110,7 +137,56 @@ function dispatch(action) {
   });
 }
 
+function findDuplicateToast(props) {
+  return memoryState.toasts.find((item) => {
+    if (!item.open) return false;
+
+    return (
+      item.title === props.title &&
+      item.description === props.description &&
+      item.variant === props.variant
+    );
+  });
+}
+
 function toast({ ...props }) {
+  const duplicate = findDuplicateToast(props);
+
+  if (duplicate) {
+    _clearFromRemoveQueue(duplicate.id);
+
+    dispatch({
+      type: actionTypes.UPDATE_TOAST,
+      toast: {
+        ...duplicate,
+        ...props,
+        id: duplicate.id,
+        open: true,
+        onOpenChange: (open) => {
+          if (!open) {
+            dispatch({
+              type: actionTypes.DISMISS_TOAST,
+              toastId: duplicate.id,
+            });
+          }
+        },
+      },
+    });
+
+    addToDismissQueue(duplicate.id);
+
+    return {
+      id: duplicate.id,
+      dismiss: () =>
+        dispatch({ type: actionTypes.DISMISS_TOAST, toastId: duplicate.id }),
+      update: (nextProps) =>
+        dispatch({
+          type: actionTypes.UPDATE_TOAST,
+          toast: { ...nextProps, id: duplicate.id },
+        }),
+    };
+  }
+
   const id = genId();
 
   const update = (props) =>
@@ -134,6 +210,8 @@ function toast({ ...props }) {
     },
   });
 
+  addToDismissQueue(id);
+
   return {
     id,
     dismiss,
@@ -152,7 +230,7 @@ function useToast() {
         listeners.splice(index, 1);
       }
     };
-  }, [state]);
+  }, []);
 
   return {
     ...state,

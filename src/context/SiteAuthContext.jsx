@@ -45,7 +45,7 @@ export function SiteAuthProvider({ children }) {
   const logout = useCallback(() => {
     clearSession();
     setUser(null);
-    window.location.href = "/login";
+    window.location.href = "/";
   }, []);
 
   const value = useMemo(

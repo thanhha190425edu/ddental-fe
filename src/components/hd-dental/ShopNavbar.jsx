@@ -1,56 +1,98 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LogIn, Phone } from "lucide-react";
+import { LogIn, LogOut, ShoppingCart, User } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import { useSiteAuth } from "@/context/SiteAuthContext";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function ShopNavbar() {
-  const { skipped } = useSiteAuth();
+  const { user, ready, skipped, logout } = useSiteAuth();
+  const { itemCount } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
+  const showUserMenu = ready && !skipped;
+  const showCartAction = ready && Boolean(user);
 
   const goToLogin = () => {
     navigate("/login", { state: { from: location.pathname } });
   };
 
-  return (
-    <header className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between gap-4">
+  const handleLogout = () => {
+    logout();
+  };
 
-        {/* CSS Logo matching mockup */}
-        <Link to="/" className="flex items-center gap-2 flex-shrink-0 group">
-          <div className="bg-[#E01A22] rounded-lg w-[42px] h-[42px] flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-            <span className="text-white font-heading font-bold text-xl leading-none">HD</span>
-          </div>
-          <span className="text-foreground font-heading font-extrabold text-[22px] tracking-widest uppercase">
-            DENTAL
-          </span>
+  return (
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 shadow-sm backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between gap-4">
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/images/logo.png"
+            alt="HD Dental Logo"
+            className="h-16 md:h-20 lg:h-24 w-auto object-contain origin-left scale-125 md:scale-150 transition-transform"
+          />
         </Link>
 
-        {/* Nav links styled like mockup */}
-        <nav className="hidden md:flex items-center gap-1.5 lg:gap-3">
-          <Link to="/" className="font-body text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all">Trang chủ</Link>
-          <Link to="/shop" className="font-body text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all">Sản phẩm</Link>
-          <Link to="/shop/ghe-nha-khoa" className="font-body text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all">Ghế NK</Link>
-          <Link to="/shop/den-tram" className="font-body text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all">Đèn Trám</Link>
-          <Link to="/shop/chan-doan" className="font-body text-[15px] font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all">Chẩn Đoán</Link>
+        <div className="flex items-center gap-3">
+          {showCartAction && (
+            <Link
+              to="/gio-hang"
+              className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:border-primary hover:text-primary"
+              aria-label="Giỏ hàng"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {itemCount > 0 && (
+                <span className="absolute -right-1 -top-1 inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-bold leading-none text-white">
+                  {itemCount}
+                </span>
+              )}
+            </Link>
+          )}
 
-          <div className="flex items-center gap-3 ml-4">
-            {!skipped && (
-              <button
-                type="button"
-                onClick={goToLogin}
-                className="font-body text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/40 px-3 py-2 rounded-md transition-all flex items-center gap-1.5"
-              >
-                <LogIn className="w-4 h-4" />
-                Đăng nhập
-              </button>
-            )}
-            <a href="tel:0914233030" className="bg-[#E01A22] text-white font-body text-sm font-medium px-5 py-2.5 rounded-full hover:bg-red-700 transition-colors shadow-sm flex items-center gap-2">
-              <Phone className="w-4 h-4" />
-              Liên hệ
-            </a>
-          </div>
-        </nav>
+          {showUserMenu && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors hover:border-primary hover:text-primary"
+                  aria-label="Tài khoản người dùng"
+                >
+                  <User className="w-5 h-5" />
+                </button>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="font-body">
+                  {user ? user.name || user.email : "Tài khoản"}
+                </DropdownMenuLabel>
+                {user?.email ? (
+                  <DropdownMenuLabel className="pt-0 text-xs font-normal text-muted-foreground">
+                    {user.email}
+                  </DropdownMenuLabel>
+                ) : null}
+                <DropdownMenuSeparator />
+
+                {user ? (
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="w-4 h-4" />
+                    Đăng xuất
+                  </DropdownMenuItem>
+                ) : (
+                  <DropdownMenuItem onClick={goToLogin}>
+                    <LogIn className="w-4 h-4" />
+                    Đăng nhập
+                  </DropdownMenuItem>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
       </div>
     </header>
   );

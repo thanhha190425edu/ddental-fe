@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone, LogIn } from "lucide-react";
+import { Menu, X, Phone, LogIn, LogOut } from "lucide-react";
 import { useSiteAuth } from "@/context/SiteAuthContext";
 
 const navLinks = [
   { label: "Trang chủ", href: "#hero" },
   { label: "Về chúng tôi", to: "/ve-chung-toi" },
   { label: "Dịch vụ", to: "/dich-vu" },
-  { label: "Sản phẩm", to: "/shop" },
   { label: "Tin tức", to: "/news" },
 ];
 
 export default function Navbar() {
-  const { skipped } = useSiteAuth();
+  const { user, ready, skipped, logout } = useSiteAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const onHome = location.pathname === "/";
+  const showAuthAction = ready && !skipped;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -42,6 +42,11 @@ export default function Navbar() {
     navigate("/login", { state: { from: location.pathname } });
   };
 
+  const handleLogout = () => {
+    setMobileOpen(false);
+    logout();
+  };
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || !onHome ? "bg-background/95 backdrop-blur-md shadow-lg" : "bg-transparent"
@@ -53,12 +58,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           to="/"
-          onClick={(e) => {
+          onClick={() => {
             setMobileOpen(false);
-            if (onHome) {
-              e.preventDefault();
-              goToSection("#hero");
-            }
           }}
           className="flex items-center gap-2"
         >
@@ -89,16 +90,15 @@ export default function Navbar() {
             )
           )}
 
-
-          {!skipped && (
+          {showAuthAction && (
             <button
               type="button"
-              onClick={goToLogin}
+              onClick={user ? handleLogout : goToLogin}
               className={`font-body text-sm font-medium flex items-center gap-1.5 hover:text-primary transition-colors ${scrolled || !onHome ? "text-foreground" : "text-white/90"
                 }`}
             >
-              <LogIn className="w-4 h-4" />
-              Đăng nhập
+              {user ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
+              {user ? "Đăng xuất" : "Đăng nhập"}
             </button>
           )}
           <Link
@@ -150,15 +150,14 @@ export default function Navbar() {
                 )
               )}
 
-
-              {!skipped && (
+              {showAuthAction && (
                 <button
                   type="button"
-                  onClick={goToLogin}
+                  onClick={user ? handleLogout : goToLogin}
                   className="font-body text-sm font-medium text-foreground py-2 text-left hover:text-primary flex items-center gap-2"
                 >
-                  <LogIn className="w-4 h-4" />
-                  Đăng nhập
+                  {user ? <LogOut className="w-4 h-4" /> : <LogIn className="w-4 h-4" />}
+                  {user ? "Đăng xuất" : "Đăng nhập"}
                 </button>
               )}
               <Link

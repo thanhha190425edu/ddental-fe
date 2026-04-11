@@ -1,7 +1,10 @@
-import React, { useState, useRef } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Phone, MessageCircle, Check, Shield, Truck, RotateCcw, ArrowLeft } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Phone, MessageCircle, Check, Shield, Truck, RotateCcw, ArrowLeft, Minus, Plus, ShoppingCart, LogIn, X } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
+import { useCart } from "@/context/CartContext";
+import { useSiteAuth } from "@/context/SiteAuthContext";
 import { products, categories } from "../lib/productData";
 import ShopNavbar from "../components/hd-dental/ShopNavbar";
 
@@ -12,12 +15,31 @@ function formatPrice(p) {
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user, ready } = useSiteAuth();
+  const { addItem } = useCart();
   const product = products.find((p) => p.id === id);
   const [activeImage, setActiveImage] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
   const [activeTab, setActiveTab] = useState("desc");
+  const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const imgRef = useRef(null);
+  const loginRedirectPath = `${location.pathname}${location.search || ""}${location.hash || ""}`;
+
+  useEffect(() => {
+    if (!showLoginPrompt) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showLoginPrompt]);
 
   if (!product) return (
     <div className="min-h-screen flex items-center justify-center font-body">
@@ -37,6 +59,48 @@ export default function ProductDetail() {
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     setZoomPos({ x, y });
+  };
+
+  const adjustQuantity = (nextValue) => {
+    setQuantity(Math.max(1, Math.min(99, nextValue)));
+  };
+
+  const handleAddToCart = () => {
+    if (!product.inStock || !ready || isAdding) return;
+
+    if (!user) {
+      setShowLoginPrompt(true);
+      return;
+    }
+
+    setIsAdding(true);
+
+    try {
+      const result = addItem(product.id, quantity);
+
+      if (!result.ok) {
+        toast({
+          title: "Không thể thêm vào giỏ",
+          description:
+            result.error === "out_of_stock"
+              ? "Sản phẩm hiện đang tạm hết hàng."
+              : "Đã có lỗi xảy ra khi cập nhật giỏ hàng.",
+        });
+        return;
+      }
+
+      toast({
+        title: "Đã thêm vào giỏ hàng",
+        description: `${product.name} x ${quantity}`,
+      });
+    } finally {
+      setIsAdding(false);
+    }
+  };
+
+  const goToLoginFromPrompt = () => {
+    setShowLoginPrompt(false);
+    navigate("/login", { state: { from: loginRedirectPath } });
   };
 
   return (
@@ -171,6 +235,47 @@ export default function ProductDetail() {
 
             {/* CTA */}
             <div className="mt-6 space-y-3">
+              <div className="flex flex-col sm:flex-row gap-3">
+                {user ? (
+                  <div className="inline-flex h-14 items-center justify-between rounded-2xl border border-border bg-muted/30 px-2 sm:w-[168px]">
+                    <button
+                      type="button"
+                      onClick={() => adjustQuantity(quantity - 1)}
+                      disabled={quantity <= 1}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="font-heading text-lg font-bold text-foreground">
+                      {quantity}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => adjustQuantity(quantity + 1)}
+                      className="flex h-10 w-10 items-center justify-center rounded-xl text-foreground transition-colors hover:bg-background"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
+                ) : null}
+
+                <button
+                  type="button"
+                  onClick={handleAddToCart}
+                  disabled={!product.inStock || !ready || isAdding}
+                  className="flex-1 bg-foreground text-background font-heading font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 hover:bg-foreground/90 transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  {!product.inStock
+                    ? "Tạm hết hàng"
+                    : user
+                      ? isAdding
+                        ? "Đang thêm..."
+                        : "Thêm vào giỏ hàng"
+                      : "Đăng nhập để thêm vào giỏ"}
+                </button>
+              </div>
+
               <a
                 href="tel:09142330303"
                 className="w-full bg-primary text-white font-heading font-bold text-base py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
@@ -269,6 +374,69 @@ export default function ProductDetail() {
           </div>
         )}
       </div>
+
+      <AnimatePresence>
+        {showLoginPrompt && (
+          <motion.div
+            className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <button
+              type="button"
+              aria-label="Đóng thông báo đăng nhập"
+              onClick={() => setShowLoginPrompt(false)}
+              className="absolute inset-0 bg-black/55 backdrop-blur-sm"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.98 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="relative z-10 w-full max-w-md overflow-hidden rounded-[28px] border border-border bg-background p-6 shadow-2xl"
+            >
+              <button
+                type="button"
+                onClick={() => setShowLoginPrompt(false)}
+                className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <ShoppingCart className="h-6 w-6" />
+              </div>
+
+              <h2 className="font-heading text-2xl font-bold text-foreground">
+                Cần đăng nhập để thêm vào giỏ hàng
+              </h2>
+              <p className="mt-3 font-body text-sm leading-relaxed text-muted-foreground">
+                Đăng nhập để lưu sản phẩm vào giỏ hàng, theo dõi số lượng và tiếp tục đặt hàng thuận tiện hơn.
+              </p>
+
+              <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() => setShowLoginPrompt(false)}
+                  className="inline-flex items-center justify-center rounded-2xl border border-border px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                >
+                  Để sau
+                </button>
+                <button
+                  type="button"
+                  onClick={goToLoginFromPrompt}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
+                >
+                  <LogIn className="w-4 h-4" />
+                  Đăng nhập ngay
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

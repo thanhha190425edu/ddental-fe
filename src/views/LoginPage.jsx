@@ -15,6 +15,10 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const justRegistered = Boolean(location.state?.registered);
+  const nextPath =
+    location.state?.from ||
+    new URLSearchParams(location.search).get("from") ||
+    "/";
 
   useEffect(() => {
     if (!ready) return;
@@ -44,7 +48,7 @@ export default function LoginPage() {
         setError(res.error);
         return;
       }
-      navigate("/", { replace: true });
+      navigate(nextPath, { replace: true });
     } finally {
       setLoading(false);
     }
