@@ -12,7 +12,11 @@ function isPublicSitePath(pathname: string | null) {
 
   return (
     pathname === "/" ||
+    pathname === "/ve-chung-toi" ||
+    pathname === "/dich-vu" ||
+    pathname === "/news" ||
     pathname === "/shop" ||
+    pathname.startsWith("/news/") ||
     pathname.startsWith("/shop/") ||
     pathname.startsWith("/product/")
   );
