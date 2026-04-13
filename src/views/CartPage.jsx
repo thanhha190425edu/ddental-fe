@@ -1,14 +1,10 @@
-﻿"use client";
+"use client";
 
 import { Link } from "react-router-dom";
 import { Minus, Phone, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-<<<<<<< HEAD
 import Navbar from "@/components/hd-dental/Navbar";
 import Footer from "@/components/hd-dental/Footer";
-=======
-import { COMPANY_PHONE, companyTelHref } from "@/lib/seo";
->>>>>>> main
 
 function formatPrice(price) {
   if (price >= 1000000) return `${(price / 1000000).toFixed(0)} triệu ₫`;
@@ -26,13 +22,8 @@ export default function CartPage() {
   } = useCart();
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-background font-body">
       <Navbar />
-=======
-    <div className="min-h-screen bg-background font-body pt-20 sm:pt-24">
-      <ShopNavbar />
->>>>>>> main
 
       <div className="border-b border-border bg-muted/30 px-4 py-2.5">
         <div className="max-w-7xl mx-auto flex items-center gap-2 font-body text-xs text-muted-foreground">
@@ -206,11 +197,11 @@ export default function CartPage() {
 
               <div className="mt-5 space-y-3">
                 <a
-                  href={companyTelHref()}
+                  href="tel:0914233030"
                   className="w-full bg-primary text-white font-heading font-bold text-base py-3.5 rounded-2xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  Gọi đặt hàng ({COMPANY_PHONE})
+                  Gọi đặt hàng (0914 233 030)
                 </a>
               </div>
             </aside>
