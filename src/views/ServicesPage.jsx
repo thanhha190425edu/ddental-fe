@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Navbar from "../components/hd-dental/Navbar";
 import Footer from "../components/hd-dental/Footer";
+import { COMPANY_PHONE, companyTelHref } from "@/lib/seo";
 
 import dynamic from "next/dynamic";
 const ClinicScene = dynamic(
@@ -220,10 +221,15 @@ function HeroBanner() {
 
           <Reveal delay={0.6}>
             <div className="flex flex-wrap gap-4">
+<<<<<<< HEAD
               <a
                 href="tel:0914233030"
                 className="inline-flex items-center gap-2.5 bg-primary text-white font-body font-bold text-sm px-8 py-4 rounded-full hover:bg-primary/90 transition-all shadow-xl shadow-primary/30 hover:-translate-y-1 group"
               >
+=======
+              <a href={companyTelHref()}
+                className="inline-flex items-center gap-2.5 bg-primary text-white font-body font-bold text-sm px-8 py-4 rounded-full hover:bg-primary/90 transition-all shadow-xl shadow-primary/30 hover:-translate-y-1 group">
+>>>>>>> main
                 ĐĂNG KÝ TƯ VẤN NGAY
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -241,6 +247,7 @@ function HeroBanner() {
 
       {/* SERVICES watermark */}
       <div className="absolute bottom-0 right-0 pointer-events-none overflow-hidden">
+<<<<<<< HEAD
         <motion.p
           className="font-heading font-black text-[10rem] lg:text-[16rem] leading-none text-white/[0.03] whitespace-nowrap"
           initial={{ x: 200, opacity: 0 }}
@@ -248,6 +255,12 @@ function HeroBanner() {
           transition={{ duration: 1.2, delay: 0.4, ease: E }}
         >
           SERVICES
+=======
+        <motion.p className="font-heading font-black text-[10rem] lg:text-[16rem] leading-none text-white/[0.03] whitespace-nowrap"
+          initial={{ x: 200, opacity: 0 }} animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.4, ease: E }}>
+          DỊCH VỤ
+>>>>>>> main
         </motion.p>
       </div>
     </section>
@@ -342,9 +355,13 @@ function ServiceClinicDesign() {
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Palette className="w-5 h-5 text-primary" />
               </div>
+<<<<<<< HEAD
               <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em]">
                 Clinic Design
               </span>
+=======
+              <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em]">Thiết kế phòng khám</span>
+>>>>>>> main
             </div>
             <h2 className="font-heading font-black text-4xl lg:text-5xl text-gray-900 leading-tight mb-2">
               THIẾT KẾ
@@ -416,12 +433,17 @@ function ServiceEquipment() {
                   <Monitor className="w-6 h-6 text-white" />
                 </div>
                 <div>
+<<<<<<< HEAD
                   <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em] block">
                     Equipment
                   </span>
                   <span className="font-heading font-black text-3xl text-white/10 leading-none">
                     02
                   </span>
+=======
+                  <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em] block">Thiết bị</span>
+                  <span className="font-heading font-black text-3xl text-white/10 leading-none">02</span>
+>>>>>>> main
                 </div>
               </div>
               <h2 className="font-heading font-black text-4xl lg:text-5xl text-white leading-tight mb-2">
@@ -562,9 +584,13 @@ function ServiceMarketing() {
             <TrendingUp className="w-6 h-6 text-primary" />
           </div>
           <div>
+<<<<<<< HEAD
             <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.3em]">
               Marketing — 03
             </span>
+=======
+            <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.3em]">Tiếp thị — 03</span>
+>>>>>>> main
             <div className="w-full h-px bg-gray-200 mt-1.5" />
           </div>
         </Reveal>
@@ -574,7 +600,7 @@ function ServiceMarketing() {
           <div className="lg:col-span-3">
             <RevealX x={-60}>
               <h2 className="font-heading font-black text-5xl lg:text-6xl text-gray-900 leading-none mb-2">
-                MARKETING
+                TIẾP THỊ
               </h2>
               <h2 className="font-heading font-black text-5xl lg:text-6xl text-primary leading-none mb-8">
                 NHA KHOA
@@ -621,12 +647,17 @@ function ServiceMarketing() {
             </div>
 
             <Reveal delay={0.3}>
+<<<<<<< HEAD
               <a
                 href="tel:0914233030"
                 className="inline-flex items-center gap-2 bg-primary text-white font-body font-bold text-sm px-7 py-3.5 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5 group w-fit"
               >
                 LIÊN HỆ TƯ VẤN{" "}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+=======
+              <a href={companyTelHref()} className="inline-flex items-center gap-2 bg-primary text-white font-body font-bold text-sm px-7 py-3.5 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5 group w-fit">
+                LIÊN HỆ TƯ VẤN <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+>>>>>>> main
               </a>
             </Reveal>
           </div>
@@ -694,9 +725,13 @@ function ServiceTraining() {
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <div>
+<<<<<<< HEAD
                 <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em] block">
                   Training — 04
                 </span>
+=======
+                <span className="font-body text-xs text-primary font-bold uppercase tracking-[0.25em] block">Đào tạo — 04</span>
+>>>>>>> main
               </div>
             </div>
             <h2 className="font-heading font-black text-4xl lg:text-5xl text-white leading-tight mb-2">
@@ -729,12 +764,17 @@ function ServiceTraining() {
                 </motion.li>
               ))}
             </ul>
+<<<<<<< HEAD
             <a
               href="tel:0914233030"
               className="inline-flex items-center gap-2 bg-primary text-white font-body font-bold text-sm px-7 py-3.5 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/30 hover:-translate-y-0.5 group w-fit"
             >
               LIÊN HỆ TƯ VẤN{" "}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+=======
+            <a href={companyTelHref()} className="inline-flex items-center gap-2 bg-primary text-white font-body font-bold text-sm px-7 py-3.5 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/30 hover:-translate-y-0.5 group w-fit">
+              LIÊN HỆ TƯ VẤN <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+>>>>>>> main
             </a>
           </RevealX>
         </div>
@@ -956,12 +996,17 @@ function CTABanner() {
           cầu.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
+<<<<<<< HEAD
           <a
             href="tel:0914233030"
             className="inline-flex items-center gap-2.5 bg-white text-primary font-body font-bold text-sm px-8 py-4 rounded-full hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1 group"
           >
+=======
+          <a href={companyTelHref()}
+            className="inline-flex items-center gap-2.5 bg-white text-primary font-body font-bold text-sm px-8 py-4 rounded-full hover:bg-gray-100 transition-all shadow-xl hover:-translate-y-1 group">
+>>>>>>> main
             <Phone className="w-4 h-4" />
-            0914 233 030
+            {COMPANY_PHONE}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <Link
