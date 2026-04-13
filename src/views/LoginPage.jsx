@@ -64,7 +64,11 @@ export default function LoginPage() {
           <div className="mb-4 flex justify-center">
             <img
               src="/images/logo.png"
+<<<<<<< HEAD
               alt="Logo HD Dental"
+=======
+              alt="HD Dental Logo"
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               className="h-16 md:h-20 lg:h-24 w-auto object-contain origin-center scale-125 md:scale-150 transition-transform"
             />
           </div>
@@ -85,14 +89,22 @@ export default function LoginPage() {
             <p className="text-sm text-destructive font-body bg-destructive/10 rounded-lg px-3 py-2">{error}</p>
           )}
           <div className="space-y-2">
+<<<<<<< HEAD
             <Label htmlFor="login-email">Địa chỉ email</Label>
+=======
+            <Label htmlFor="login-email">Email</Label>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             <Input
               id="login-email"
               type="email"
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+<<<<<<< HEAD
               placeholder="tenban@email.com"
+=======
+              placeholder="you@example.com"
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               className="h-11"
             />
           </div>

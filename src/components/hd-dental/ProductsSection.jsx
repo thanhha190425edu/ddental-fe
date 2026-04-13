@@ -7,7 +7,11 @@ import { Reveal, RevealX } from "@/lib/animations";
 const categories = [
   {
     title: "Ghế Nha Khoa",
+<<<<<<< HEAD
     subtitle: "Ghế nha khoa cao cấp",
+=======
+    subtitle: "Premium Dental Chairs",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/9d44d492a_generated_28f20030.png",
     count: "45+ sản phẩm",
     link: "/shop/ghe-nha-khoa",
@@ -15,7 +19,11 @@ const categories = [
   },
   {
     title: "Đèn Trám - Đèn Tẩy Trắng",
+<<<<<<< HEAD
     subtitle: "Đèn trám & tẩy trắng",
+=======
+    subtitle: "Curing & Whitening Lights",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/6b1b734a3_generated_6271cc37.png",
     count: "30+ sản phẩm",
     link: "/shop/den-tram",
@@ -23,7 +31,11 @@ const categories = [
   },
   {
     title: "Thiết Bị Chẩn Đoán Hình Ảnh",
+<<<<<<< HEAD
     subtitle: "Chẩn đoán hình ảnh",
+=======
+    subtitle: "Diagnostic Imaging",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/5201dbde0_generated_d92d08c0.png",
     count: "60+ sản phẩm",
     link: "/shop/chan-doan",

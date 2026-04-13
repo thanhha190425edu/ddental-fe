@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { Reveal } from "@/lib/animations";
+<<<<<<< HEAD
 import {
   COMPANY_ADDRESS,
   COMPANY_EMAIL,
   COMPANY_PHONE,
   companyTelHref,
 } from "@/lib/seo";
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 
 const quickLinks = [
   { label: "Về chúng tôi", to: "/ve-chung-toi" },
@@ -16,17 +19,25 @@ const quickLinks = [
   { label: "Dịch vụ", to: "/dich-vu" },
   { label: "HD Academy", to: "/dich-vu#service-training" },
   { label: "Tin tức", to: "/news" },
+<<<<<<< HEAD
   { label: "Liên hệ", to: "/lien-he" },
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 ];
 
 export default function Footer() {
   return (
+<<<<<<< HEAD
     <footer id="contact" className="bg-foreground py-16 lg:py-20 scroll-mt-24 overflow-x-hidden overflow-y-visible">
+=======
+    <footer id="contact" className="bg-foreground py-16 lg:py-20 scroll-mt-24 overflow-hidden">
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <Reveal delay={0}>
             <div className="lg:col-span-1">
+<<<<<<< HEAD
               <Link
                 to="/"
                 className="inline-block mb-6 origin-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
@@ -37,6 +48,14 @@ export default function Footer() {
                   className="h-14 sm:h-16 md:h-20 lg:h-[4.5rem] xl:h-24 w-auto max-w-none object-contain origin-left scale-110 sm:scale-125 md:scale-[1.35] lg:scale-125 xl:scale-150 transition-transform"
                 />
               </Link>
+=======
+              <div className="flex items-center gap-2 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                  <span className="text-primary-foreground font-heading font-bold text-lg">HD</span>
+                </div>
+                <span className="font-heading font-bold text-xl text-background tracking-tight">DENTAL</span>
+              </div>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               <p className="font-body text-background/50 text-sm leading-relaxed">
                 Đồng hành cùng nha sĩ Việt Nam trên hành trình mang đến nụ cười hoàn hảo cho mọi người.
               </p>
@@ -88,6 +107,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li className="flex items-start gap-3 group">
                   <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+<<<<<<< HEAD
                   <span className="font-body text-background/50 text-sm group-hover:text-background/70 transition-colors">
                     {COMPANY_ADDRESS}
                   </span>
@@ -109,6 +129,17 @@ export default function Footer() {
                   >
                     {COMPANY_EMAIL}
                   </a>
+=======
+                  <span className="font-body text-background/50 text-sm group-hover:text-background/70 transition-colors">123 Nguyễn Huệ, Q.1, TP.HCM</span>
+                </li>
+                <li className="flex items-center gap-3 group">
+                  <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                  <a href="tel:0914233030" className="font-body text-background/50 text-sm group-hover:text-primary transition-colors">0914 233 030</a>
+                </li>
+                <li className="flex items-center gap-3 group">
+                  <Mail className="w-4 h-4 text-primary flex-shrink-0" />
+                  <a href="mailto:info@hddental.vn" className="font-body text-background/50 text-sm group-hover:text-primary transition-colors">info@hddental.vn</a>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                 </li>
               </ul>
             </div>
@@ -124,7 +155,11 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="font-body text-background/30 text-sm">
+<<<<<<< HEAD
             © 2026 HD Dental. Bảo lưu mọi quyền.
+=======
+            © 2026 HD Dental. All rights reserved.
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
           </p>
           <div className="flex gap-6">
             {["Chính sách bảo mật", "Điều khoản sử dụng"].map((link) => (

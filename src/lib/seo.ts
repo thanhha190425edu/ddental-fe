@@ -20,6 +20,7 @@ export const SITE_KEYWORDS = [
   "tin tức nha khoa",
 ];
 
+<<<<<<< HEAD
 /** Hiển thị (có khoảng trắng); `tel:` dùng `COMPANY_PHONE.replace(/\D/g, "")` */
 export const COMPANY_PHONE = "0236 3609 444";
 export const COMPANY_EMAIL = "hddental@gmail.com";
@@ -28,6 +29,10 @@ export const COMPANY_ADDRESS =
 export function companyTelHref(): string {
   return `tel:${COMPANY_PHONE.replace(/\D/g, "")}`;
 }
+=======
+export const COMPANY_PHONE = "0914233030";
+export const COMPANY_EMAIL = "info@hddental.vn";
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 
 function normalizeUrl(rawUrl?: string | null) {
   const value = rawUrl?.trim();
@@ -152,12 +157,15 @@ export function buildPageMetadata({
 }
 
 export function getOrganizationJsonLd() {
+<<<<<<< HEAD
   const phoneDigits = COMPANY_PHONE.replace(/\D/g, "");
   const telephone =
     phoneDigits.startsWith("0") && phoneDigits.length >= 9
       ? `+84${phoneDigits.slice(1)}`
       : `+84${phoneDigits}`;
 
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -165,11 +173,19 @@ export function getOrganizationJsonLd() {
     url: SITE_URL,
     logo: toAbsoluteUrl("/images/logo.png"),
     email: COMPANY_EMAIL,
+<<<<<<< HEAD
     telephone,
     address: {
       "@type": "PostalAddress",
       streetAddress: "370 Nguyen Tri Phuong, Vinh Trung",
       addressLocality: "Hai Chau, Da Nang",
+=======
+    telephone: `+84${COMPANY_PHONE.slice(1)}`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "123 Nguyen Hue",
+      addressLocality: "TP.HCM",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
       addressCountry: "VN",
     },
   };

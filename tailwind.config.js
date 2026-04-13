@@ -83,6 +83,7 @@ theme: {
         to: {
           height: '0'
         }
+<<<<<<< HEAD
       },
       'shop-banner-float': {
         '0%, 100%': { transform: 'translateY(0)' },
@@ -95,6 +96,13 @@ theme: {
       'shop-banner-float': 'shop-banner-float 3.2s ease-in-out infinite',
       'shop-banner-float-slow': 'shop-banner-float 4.5s ease-in-out infinite',
       'shop-banner-float-fast': 'shop-banner-float 2.7s ease-in-out infinite',
+=======
+      }
+    },
+    animation: {
+      'accordion-down': 'accordion-down 0.2s ease-out',
+      'accordion-up': 'accordion-up 0.2s ease-out'
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     }
   }
 },

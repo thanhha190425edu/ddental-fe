@@ -7,23 +7,39 @@ const services = [
   {
     icon: Palette,
     title: "Thiết kế phòng khám",
+<<<<<<< HEAD
     subtitle: "Thiết kế phòng khám",
+=======
+    subtitle: "Clinic Design",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     desc: "Tư vấn và thiết kế phòng khám nha khoa chuyên nghiệp, tối ưu không gian làm việc và trải nghiệm bệnh nhân. Từ bản vẽ đến thi công hoàn thiện.",
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/f114a4731_generated_image.png",
     accent: "bg-primary",
     num: "01",
+<<<<<<< HEAD
     tag: "Thiết kế",
+=======
+    tag: "Design",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   },
   {
     icon: Monitor,
     title: "Thiết bị nha khoa",
+<<<<<<< HEAD
     subtitle: "Thiết bị nha khoa",
+=======
+    subtitle: "Dental Equipment",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     desc: "Phân phối độc quyền các thương hiệu thiết bị nha khoa hàng đầu thế giới. Ghế nha khoa, máy chụp X-quang, đèn trám composite và hàng trăm sản phẩm chất lượng cao.",
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/a9e78f522_generated_image.png",
     accent: "bg-white",
     accentText: "text-black",
     num: "02",
+<<<<<<< HEAD
     tag: "Thiết bị",
+=======
+    tag: "Equipment",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   },
   {
     icon: GraduationCap,
@@ -33,7 +49,11 @@ const services = [
     image: "https://media.base44.com/images/public/69cff7a985a4c7940dcab568/8174e0e9a_generated_image.png",
     accent: "bg-primary",
     num: "03",
+<<<<<<< HEAD
     tag: "Học viện",
+=======
+    tag: "Academy",
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   },
 ];
 
@@ -50,7 +70,11 @@ export default function ServicesSection() {
         <div>
           <span className="font-body text-primary text-xs font-bold uppercase tracking-[0.3em]">Dịch vụ của chúng tôi</span>
           <h2 className="font-heading font-bold text-5xl lg:text-7xl text-white mt-4 leading-none">
+<<<<<<< HEAD
             Nền tảng<br /><span className="text-white/20">dịch vụ</span>
+=======
+            Core<br /><span className="text-white/20">Services</span>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
           </h2>
         </div>
         <p className="font-body text-white/40 text-sm max-w-xs leading-relaxed md:text-right">

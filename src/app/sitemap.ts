@@ -37,12 +37,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+<<<<<<< HEAD
     {
       url: `${SITE_URL}/lien-he`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
     },
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   ];
 
   const categoryRoutes = Object.values(categories).map((category) => ({

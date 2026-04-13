@@ -1,8 +1,13 @@
 "use client";
 
+<<<<<<< HEAD
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Heart, MessageCircle } from "lucide-react";
+=======
+import { Link, useParams, Navigate } from "react-router-dom";
+import { ArrowLeft, Calendar } from "lucide-react";
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 import { getArticleBySlug } from "@/lib/newsData";
 import Navbar from "@/components/hd-dental/Navbar";
 import Footer from "@/components/hd-dental/Footer";
@@ -22,6 +27,7 @@ function formatDate(iso) {
 export default function NewsArticlePage() {
   const { slug } = useParams();
   const article = slug ? getArticleBySlug(slug) : null;
+<<<<<<< HEAD
   const articleKey = useMemo(
     () => (slug ? `news-article-liked:${slug}` : null),
     [slug]
@@ -86,6 +92,8 @@ export default function NewsArticlePage() {
     setCommentText("");
     window.localStorage.setItem(commentsKey, JSON.stringify(nextComments));
   };
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 
   if (!article) {
     return <Navigate to="/news" replace />;
@@ -125,6 +133,7 @@ export default function NewsArticlePage() {
                 <p key={i}>{para}</p>
               ))}
             </div>
+<<<<<<< HEAD
             <div className="mt-12 pt-8 border-t border-border flex flex-wrap items-center gap-3 sm:gap-4">
               <button
                 type="button"
@@ -155,11 +164,18 @@ export default function NewsArticlePage() {
               <Link
                 to="/news"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline sm:ml-auto"
+=======
+            <div className="mt-12 pt-8 border-t border-border">
+              <Link
+                to="/news"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               >
                 <ArrowLeft className="w-4 h-4" />
                 Quay lại danh sách tin
               </Link>
             </div>
+<<<<<<< HEAD
 
             {showComments && (
               <div className="mt-6 rounded-xl border border-border bg-muted/30 p-4 sm:p-5">
@@ -203,6 +219,8 @@ export default function NewsArticlePage() {
                 </div>
               </div>
             )}
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
           </div>
         </div>
       </article>

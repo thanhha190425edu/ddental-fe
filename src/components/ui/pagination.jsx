@@ -10,7 +10,11 @@ const Pagination = ({
 }) => (
   <nav
     role="navigation"
+<<<<<<< HEAD
     aria-label="Phân trang"
+=======
+    aria-label="pagination"
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     className={cn("mx-auto flex w-full justify-center", className)}
     {...props} />
 )
@@ -50,12 +54,20 @@ const PaginationPrevious = ({
   ...props
 }) => (
   <PaginationLink
+<<<<<<< HEAD
     aria-label="Chuyển đến trang trước"
+=======
+    aria-label="Go to previous page"
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     size="default"
     className={cn("gap-1 pl-2.5", className)}
     {...props}>
     <ChevronLeft className="h-4 w-4" />
+<<<<<<< HEAD
     <span>Trước</span>
+=======
+    <span>Previous</span>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   </PaginationLink>
 )
 PaginationPrevious.displayName = "PaginationPrevious"
@@ -65,11 +77,19 @@ const PaginationNext = ({
   ...props
 }) => (
   <PaginationLink
+<<<<<<< HEAD
     aria-label="Chuyển đến trang sau"
     size="default"
     className={cn("gap-1 pr-2.5", className)}
     {...props}>
     <span>Sau</span>
+=======
+    aria-label="Go to next page"
+    size="default"
+    className={cn("gap-1 pr-2.5", className)}
+    {...props}>
+    <span>Next</span>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 )
@@ -84,7 +104,11 @@ const PaginationEllipsis = ({
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}>
     <MoreHorizontal className="h-4 w-4" />
+<<<<<<< HEAD
     <span className="sr-only">Thêm trang</span>
+=======
+    <span className="sr-only">More pages</span>
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   </span>
 )
 PaginationEllipsis.displayName = "PaginationEllipsis"

@@ -3,13 +3,20 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+<<<<<<< HEAD
 import { Star, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Phone, Check, Shield, Truck, RotateCcw, ArrowLeft, Minus, Plus, ShoppingCart, LogIn, X } from "lucide-react";
+=======
+import { Star, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Phone, MessageCircle, Check, Shield, Truck, RotateCcw, ArrowLeft, Minus, Plus, ShoppingCart, LogIn, X } from "lucide-react";
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 import { toast } from "@/components/ui/use-toast";
 import { useCart } from "@/context/CartContext";
 import { useSiteAuth } from "@/context/SiteAuthContext";
 import { products, categories } from "../lib/productData";
 import ShopNavbar from "../components/hd-dental/ShopNavbar";
+<<<<<<< HEAD
 import { COMPANY_PHONE, companyTelHref } from "@/lib/seo";
+=======
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 
 function formatPrice(p) {
   if (p >= 1000000) return (p / 1000000).toFixed(0) + " triệu ₫";
@@ -203,7 +210,11 @@ export default function ProductDetail() {
             <div className="flex items-start justify-between gap-4 mb-2">
               <span className="font-body text-xs text-primary font-bold uppercase tracking-wider">{product.brand}</span>
               {product.tag && (
+<<<<<<< HEAD
                 <span className={`font-body text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full ${{ "Bán chạy": "bg-amber-500 text-white", "Nổi bật": "bg-sky-600 text-white", "Mới": "bg-emerald-600 text-white", "Giảm giá": "bg-rose-600 text-white", "Cao cấp": "bg-violet-900 text-white" }[product.tag]
+=======
+                <span className={`font-body text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full ${{ "Best Seller": "bg-primary text-white", "Hot": "bg-orange-500 text-white", "Mới": "bg-green-600 text-white", "Sale": "bg-primary text-white", "Premium": "bg-foreground text-background" }[product.tag]
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                   }`}>{product.tag}</span>
               )}
             </div>
@@ -280,11 +291,28 @@ export default function ProductDetail() {
               </div>
 
               <a
+<<<<<<< HEAD
                 href={companyTelHref()}
                 className="w-full bg-primary text-white font-heading font-bold text-base py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
               >
                 <Phone className="w-5 h-5" />
                 Gọi ngay: {COMPANY_PHONE}
+=======
+                href="tel:09142330303"
+                className="w-full bg-primary text-white font-heading font-bold text-base py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                Gọi ngay: 0914 233 030
+              </a>
+              <a
+                href="https://zalo.me/0914233030"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full border-2 border-primary text-primary font-heading font-bold text-base py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-primary hover:text-white transition-colors"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Tư vấn qua Zalo
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               </a>
             </div>
 

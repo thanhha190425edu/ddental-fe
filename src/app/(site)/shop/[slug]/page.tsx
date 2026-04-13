@@ -35,7 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: category.description,
     path: `/shop/${category.slug}`,
     image: category.banner,
+<<<<<<< HEAD
     keywords: [category.name, "danh mục nha khoa", "HD Dental", "thiết bị nha khoa"],
+=======
+    keywords: [category.name, category.name_en, "danh mục nha khoa"],
+>>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   });
 }
 
