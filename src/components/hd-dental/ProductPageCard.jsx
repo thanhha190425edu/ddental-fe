@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -25,17 +25,10 @@ export default function ProductPageCard({ product, pageIndex, totalPages }) {
 
         <div className="relative flex min-w-0 flex-col justify-center rounded-2xl bg-white p-5 sm:p-6 lg:rounded-l-none lg:pl-8">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-400">
-<<<<<<< HEAD
             Trưng bày sản phẩm
           </p>
 
           <h3 className="text-balance font-heading text-2xl font-black leading-tight text-primary sm:text-3xl lg:text-4xl">
-=======
-            Product Showcase
-          </p>
-
-          <h3 className="text-balance font-heading text-2xl font-black leading-tight text-zinc-900 sm:text-3xl lg:text-4xl">
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             {product.name}
           </h3>
 
@@ -46,15 +39,9 @@ export default function ProductPageCard({ product, pageIndex, totalPages }) {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               to={`/product/${product.id}`}
-<<<<<<< HEAD
               className="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 sm:w-auto"
             >
               Xem chi tiết
-=======
-              className="inline-flex w-full items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-700 sm:w-auto"
-            >
-              Discover More
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             </Link>
 
             <span className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-400">

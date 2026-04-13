@@ -1,15 +1,11 @@
-import * as React from "react"
+﻿import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 const Breadcrumb = React.forwardRef(
-<<<<<<< HEAD
   ({ ...props }, ref) => <nav ref={ref} aria-label="Đường dẫn trang" {...props} />
-=======
-  ({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
 )
 Breadcrumb.displayName = "Breadcrumb"
 
@@ -80,11 +76,7 @@ const BreadcrumbEllipsis = ({
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}>
     <MoreHorizontal className="h-4 w-4" />
-<<<<<<< HEAD
     <span className="sr-only">Thêm</span>
-=======
-    <span className="sr-only">More</span>
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
   </span>
 )
 BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"

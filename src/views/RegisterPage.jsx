@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -72,11 +72,7 @@ export default function RegisterPage() {
           <div className="mb-4 flex justify-center">
             <img
               src="/images/logo.png"
-<<<<<<< HEAD
               alt="Logo HD Dental"
-=======
-              alt="HD Dental Logo"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               className="h-16 md:h-20 lg:h-24 w-auto object-contain origin-center scale-125 md:scale-150 transition-transform"
             />
           </div>
@@ -103,22 +99,14 @@ export default function RegisterPage() {
             />
           </div>
           <div className="space-y-2">
-<<<<<<< HEAD
             <Label htmlFor="reg-email">Địa chỉ email</Label>
-=======
-            <Label htmlFor="reg-email">Email</Label>
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             <Input
               id="reg-email"
               type="email"
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-<<<<<<< HEAD
               placeholder="tenban@email.com"
-=======
-              placeholder="you@example.com"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               className="h-11"
             />
           </div>

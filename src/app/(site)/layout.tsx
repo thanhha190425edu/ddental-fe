@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Suspense, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,10 +13,7 @@ function isPublicSitePath(pathname: string | null) {
   return (
     pathname === "/" ||
     pathname === "/ve-chung-toi" ||
-<<<<<<< HEAD
     pathname === "/lien-he" ||
-=======
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
     pathname === "/dich-vu" ||
     pathname === "/news" ||
     pathname === "/shop" ||

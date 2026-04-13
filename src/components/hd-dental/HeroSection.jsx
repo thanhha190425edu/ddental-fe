@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   motion,
@@ -110,21 +110,6 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/80" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
 
-<<<<<<< HEAD
-=======
-      {/* Decorative circles */}
-      <motion.div
-        className="absolute top-24 right-16 w-80 h-80 rounded-full border border-primary/10 pointer-events-none hidden lg:block"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-      />
-      <motion.div
-        className="absolute top-36 right-28 w-48 h-48 rounded-full border border-primary/8 pointer-events-none hidden lg:block"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-      />
-
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
       {/* Watermark */}
       <div className="absolute bottom-0 right-0 pointer-events-none overflow-hidden hidden lg:block">
         <motion.p
@@ -139,7 +124,6 @@ export default function HeroSection() {
 
       {/* Content */}
       <motion.div
-<<<<<<< HEAD
         className="relative h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-16 flex flex-col justify-center min-h-0
           pt-24 sm:pt-28 md:pt-28 lg:pt-[10.5rem] xl:pt-36
           pb-28 sm:pb-24
@@ -154,32 +138,15 @@ export default function HeroSection() {
             <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1.5 max-w-full border border-primary/40 text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.2em] lg:tracking-[0.25em] px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 md:mb-6 lg:mb-7">
               <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-primary animate-pulse" />
               <span className="leading-snug">Giải pháp nha khoa #1 Việt Nam</span>
-=======
-        className="relative h-full max-w-7xl mx-auto px-8 lg:px-16 flex flex-col justify-center"
-        style={{ opacity: contentOpacity }}
-      >
-        <div className="mt-16 lg:mt-0 max-w-3xl">
-          {/* Badge */}
-          <Reveal delay={0.1}>
-            <div className="inline-flex items-center gap-2 border border-primary/40 text-primary text-xs font-bold uppercase tracking-[0.25em] px-4 py-2 rounded-full mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Giải pháp nha khoa #1 Việt Nam
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             </div>
           </Reveal>
 
           {/* Title */}
           <AnimatePresence mode="wait">
             <motion.div key={current}>
-<<<<<<< HEAD
               <div className="overflow-hidden mb-0.5 pt-2 pb-2 md:pt-3 md:pb-3">
                 <motion.h1
                   className="font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95]"
-=======
-              <div className="overflow-hidden mb-1 pt-4 pb-3">
-                <motion.h1
-                  className="font-heading font-black text-4xl md:text-7xl lg:text-8xl text-white leading-none"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                   initial={{ y: 120 }}
                   animate={{ y: 0 }}
                   exit={{ y: -120 }}
@@ -188,15 +155,9 @@ export default function HeroSection() {
                   {slides[current].line1}
                 </motion.h1>
               </div>
-<<<<<<< HEAD
               <div className="overflow-hidden mb-3 md:mb-4 lg:mb-5 pt-2 md:pt-3">
                 <motion.h1
                   className="font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-primary leading-[0.95]"
-=======
-              <div className="overflow-hidden mb-6 pt-4">
-                <motion.h1
-                  className="font-heading font-black text-4xl md:text-7xl lg:text-8xl text-primary leading-none"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                   initial={{ y: 120 }}
                   animate={{ y: 0 }}
                   exit={{ y: -120 }}
@@ -206,11 +167,7 @@ export default function HeroSection() {
                 </motion.h1>
               </div>
               <motion.p
-<<<<<<< HEAD
                 className="font-body text-white/60 text-base md:text-lg lg:text-xl max-w-lg"
-=======
-                className="font-body text-white/60 text-lg md:text-xl max-w-lg"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
@@ -223,11 +180,7 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <Reveal delay={0.4}>
-<<<<<<< HEAD
             <div className="flex gap-3 sm:gap-4 mt-6 md:mt-8 lg:mt-9 xl:mt-10 flex-wrap">
-=======
-            <div className="flex gap-4 mt-10 flex-wrap">
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
               <Link
                 to="/shop"
                 className="inline-flex items-center gap-2.5 bg-primary text-white font-body font-bold text-sm px-8 py-4 rounded-full hover:bg-primary/90 transition-all shadow-xl shadow-primary/30 hover:-translate-y-1 group"
@@ -235,21 +188,12 @@ export default function HeroSection() {
                 XEM SẢN PHẨM
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-<<<<<<< HEAD
               <Link
                 to="/lien-he"
                 className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-body font-semibold text-sm px-8 py-4 rounded-full hover:border-white hover:bg-white/10 transition-all"
               >
                 Liên hệ
               </Link>
-=======
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-body font-semibold text-sm px-8 py-4 rounded-full hover:border-white hover:bg-white/10 transition-all"
-              >
-                Liên hệ
-              </a>
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             </div>
           </Reveal>
 
@@ -257,11 +201,7 @@ export default function HeroSection() {
           <Reveal delay={0.6}>
             <a
               href="#stats"
-<<<<<<< HEAD
               className="inline-flex items-center gap-2 text-white/40 hover:text-white font-body text-xs mt-6 md:mt-8 xl:mt-12 transition-colors [@media(max-height:760px)]:lg:hidden"
-=======
-              className="inline-flex items-center gap-2 text-white/40 hover:text-white font-body text-xs mt-12 transition-colors"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
             >
               Khám phá thêm <ChevronDown className="w-4 h-4 animate-bounce" />
             </a>
@@ -269,25 +209,15 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-<<<<<<< HEAD
       {/* News Grid — max-width theo lg để không đè lên nút slide bên phải */}
       <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 lg:bottom-8 lg:left-16 lg:right-auto hidden lg:block z-20 w-[calc(100%-7rem)] max-w-2xl xl:max-w-3xl xl:w-auto">
         <div className="grid grid-cols-3 gap-2 sm:gap-3">
-=======
-      {/* News Grid */}
-      <div className="absolute bottom-8 left-8 lg:left-16 right-8 lg:right-auto hidden lg:block max-w-3xl">
-        <div className="grid grid-cols-3 gap-3">
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
           {heroNews.map((item, i) => (
             <Link key={item.slug} to={`/news/${item.slug}`}>
               <motion.div
                 onMouseEnter={() => setHoveredSlide(i % slides.length)}
                 onMouseLeave={() => setHoveredSlide(null)}
-<<<<<<< HEAD
                 className="bg-white/[0.07] backdrop-blur-xl border border-white/15 rounded-lg xl:rounded-xl px-3.5 py-3 xl:px-5 xl:py-4 cursor-pointer hover:bg-white/15 transition-all duration-300 group h-full"
-=======
-                className="bg-white/[0.07] backdrop-blur-xl border border-white/15 rounded-xl px-5 py-4 cursor-pointer hover:bg-white/15 transition-all duration-300 group h-full"
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 + i * 0.1, ease: E }}
@@ -296,11 +226,7 @@ export default function HeroSection() {
                 <span className="text-primary font-body text-[10px] font-bold uppercase tracking-wider">
                   {item.tag}
                 </span>
-<<<<<<< HEAD
                 <p className="text-white font-body text-xs xl:text-sm font-medium mt-1.5 xl:mt-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-=======
-                <p className="text-white font-body text-sm font-medium mt-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
                   {item.title}
                 </p>
                 <ArrowRight className="w-3 h-3 text-white/30 mt-2 group-hover:text-primary group-hover:translate-x-1 transition-all" />
@@ -311,11 +237,7 @@ export default function HeroSection() {
       </div>
 
       {/* Slide controls */}
-<<<<<<< HEAD
       <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 lg:right-14 xl:right-16 z-20 hidden lg:flex flex-col items-end gap-3 xl:gap-4 shrink-0">
-=======
-      <div className="absolute bottom-8 right-8 lg:right-16 hidden lg:flex flex-col items-end gap-4">
->>>>>>> 815a6b25c30d0ce2b8a9d66a6dc5f1bb389afc2c
         <div className="flex items-center gap-3">
           <button
             onClick={() => goTo((current - 1 + slides.length) % slides.length)}
